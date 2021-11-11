@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="7dp"
+    android:id="@+id/fscId"
+    app:cardBackgroundColor="#B3B6B7">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="7dp">
+
+        <TextView
+            android:id="@+id/ftitleId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Title"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ftimeId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ftitleId"
+            android:layout_marginBottom="2dp"
+            android:text="18:00 - Not started"
+            android:textSize="13dp" />
+
+
+        <TableLayout
+            android:id="@+id/tabId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ftimeId"
+            android:padding="5dp"
+            android:stretchColumns="2">
+
+            <TableRow>
+
+
+
+                <TextView
+                    android:id="@+id/fteam1nameId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_weight="1"
+                    android:text="Team1"
+                    android:textSize="17dp" />
+
+                <TextView
+                    android:id="@+id/fscore1Id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Score1"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow>
+
+
+                <TextView
+                    android:id="@+id/fteam2nameId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_weight="1"
+                    android:text="Team1"
+                    android:textSize="17dp" />
+
+                <TextView
+                    android:id="@+id/fscore2Id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Score2"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/fendId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tabId"
+            android:text="Title"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

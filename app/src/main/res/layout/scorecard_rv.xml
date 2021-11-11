@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scId"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="7dp"
+    app:cardBackgroundColor="#B3B6B7">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="7dp">
+
+
+        <TextView
+            android:id="@+id/titleId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Title"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/endId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleId"
+            android:layout_marginBottom="2dp"
+            android:text="Title"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/statusId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/endId"
+            android:text="Title"
+            android:textSize="13dp" />
+
+
+        <TableLayout
+            android:id="@+id/table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/statusId"
+            android:paddingLeft="5dp"
+            android:stretchColumns="1, 2">
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/team1nameId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_weight="1"
+                    android:text="Team1"
+                    android:textSize="17dp" />
+
+                <TextView
+                    android:id="@+id/score1Id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="Score1"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+            </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:id="@+id/table1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/table"
+            android:paddingLeft="5dp"
+            android:stretchColumns="1, 2">
+            <TableRow>
+                <TextView
+                    android:id="@+id/team2nameId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Team1"
+                    android:layout_weight="1"
+                    android:layout_column="0"
+                    android:textSize="17dp" />
+
+                <TextView
+                    android:textAlignment="viewEnd"
+                    android:id="@+id/score2Id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Score2"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/tossId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/table1"
+            android:text="Title"
+            android:textSize="13dp" />
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
+<!--<LinearLayout-->
+<!--android:id="@+id/team1Id"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="30dp"-->
+<!--android:layout_below="@id/timeId"-->
+<!--android:layout_marginBottom="4dp"-->
+<!--android:orientation="horizontal">-->
+
+<!--<TextView-->
+<!--    android:id="@+id/team1nameId"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:drawableLeft="@drawable/ind1"-->
+<!--    android:text="Team1"-->
+<!--    android:textSize="23dp" />-->
+
+<!--<TextView-->
+<!--    android:id="@+id/score1Id"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_gravity="right"-->
+<!--    android:layout_marginLeft="150dp"-->
+<!--    android:gravity="right"-->
+<!--    android:text="Score1"-->
+<!--    android:textColor="@color/black"-->
+<!--    android:textSize="22dp"-->
+<!--    android:textStyle="bold" />-->
+
+<!--</LinearLayout>-->
+
+<!--<LinearLayout-->
+<!--android:id="@+id/team2Id"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="30dp"-->
+<!--android:orientation="horizontal"-->
+<!--android:layout_below="@id/team1Id"-->
+<!--android:layout_marginBottom="4dp">-->
+
+<!--<TextView-->
+<!--    android:id="@+id/team2nameId"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:drawableLeft="@drawable/eng1"-->
+<!--    android:text="Team2"-->
+<!--    android:textSize="23dp" />-->
+
+<!--<TextView-->
+<!--    android:id="@+id/score2Id"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_marginLeft="150dp"-->
+<!--    android:text="Score2"-->
+<!--    android:gravity="right"-->
+<!--    android:textColor="@color/black"-->
+<!--    android:textStyle="bold"-->
+<!--    android:textSize="22dp"/>-->
+
+<!--</LinearLayout>-->

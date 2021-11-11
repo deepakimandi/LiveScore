@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/csbuttons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="8sp">
+
+<!--        <Button-->
+<!--            android:id="@+id/ms_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textStyle="bold"-->
+<!--            android:text="Live"-->
+<!--            android:drawablePadding="2dp"-->
+<!--            android:paddingRight="2dp"-->
+<!--            android:onClick="setLivecard"-->
+<!--            />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/cslive_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textStyle="bold"-->
+<!--            android:text="Match summary"-->
+<!--            android:drawablePadding="2dp"-->
+<!--            android:onClick="setMS"/>-->
+
+        <Button
+            android:id="@+id/cslive_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:drawablePadding="2dp"
+            android:onClick="setLivecard"
+            android:paddingRight="2dp"
+            android:text="Live"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/ms_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:text="Match summary"
+            android:drawablePadding="2dp"
+            android:onClick="setMS"/>
+
+    </LinearLayout>
+
+<!--        <include-->
+<!--            android:id="@+id/cslayoutId"-->
+<!--            android:layout_below="@+id/csbuttons"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_width="wrap_content" />-->
+
+    <RelativeLayout
+        android:id="@+id/rlId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/csbuttons" />
+
+
+</RelativeLayout>
