@@ -47,8 +47,10 @@ def getFBMatches():
                 win += 'Match tied'
         else:
             win += '-----'
+        # if e['homeTeam']['name'].find('ASC') != -1:
+        #     continue
         ret[i] = [e['tournament']['name'], e['homeTeam']['name'], e['awayTeam']['name'], ' ' if not bool(e['homeScore']) else e['homeScore']['current'], ' ' if not bool(e['awayScore']) else e['awayScore']['current'], str(dt_object.time())[:5] + ' - ' + e['status']['description'] + (' (FRO)' if e['finalResultOnly'] else ''), win]
         i = str(int(i) + 1)
     return ret;
 
-pprint(getFBMatches())
+# pprint(getFBMatches())

@@ -102,7 +102,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="There are no live games currently in progress"
+        android:textSize="22dp"
+        android:text="There are no live matches currently in progress"
         android:layout_centerInParent="true"
         android:textColor="#FFFFFF"
         android:visibility="gone" />

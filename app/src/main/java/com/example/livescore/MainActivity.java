@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements CatAdapter.CatCli
         catStrings.add(new CatBean("Football", false));
 //        catStrings.add(new CatBean("Tennis", false));
         catStrings.add(new CatBean("Hockey", false));
-        catStrings.add(new CatBean("Basketball", false));
+//        catStrings.add(new CatBean("Basketball", false));
         catAdapter.notifyDataSetChanged();
     }
 
@@ -235,6 +235,10 @@ public class MainActivity extends AppCompatActivity implements CatAdapter.CatCli
                 {
                     scorecardArrayList.clear();
                     scorecardAdapter.notifyDataSetChanged();
+                    if(flag == 0)
+                        emptyTv.setText("There are no matches today");
+                    else
+                        emptyTv.setText("There are no live matches currently in progress");
                     emptyTv.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
 //                    Toast.makeText(getApplicationContext(), "Empty", Toast.LENGTH_LONG).show();
@@ -412,6 +416,7 @@ public class MainActivity extends AppCompatActivity implements CatAdapter.CatCli
                 {
                     fScorecardArrayList.clear();
                     fScorecardAdapter.notifyDataSetChanged();
+                    emptyTv.setText("There are no matches today");
                     emptyTv.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                     return;
@@ -424,12 +429,18 @@ public class MainActivity extends AppCompatActivity implements CatAdapter.CatCli
                 {
 //                    fScorecardArrayList.clear();
 //                    fScorecardAdapter.notifyDataSetChanged();
+                    boolean check = false;
                     for (; it.hasNext(); ) {
                         String key = it.next();
                         JSONArray jsonArray = jsonObject.getJSONArray(key);
                         if(jsonArray.get(5).toString().charAt(8) == 'N' || jsonArray.get(5).toString().charAt(8) == 'E')
                             continue;
                         fScorecardArrayList.add(new FScorecard("Football", (String) jsonArray.get(0), (String) jsonArray.get(1), (String) jsonArray.get(2), jsonArray.get(3).toString(), jsonArray.get(4).toString(), jsonArray.get(5).toString(), jsonArray.get(6).toString()));
+                        check = true;
+                    }
+                    if(!check) {
+                        emptyTv.setVisibility(View.VISIBLE);
+                        emptyTv.setText("There are no live matches currently in progress");
                     }
                 }
                 else {
@@ -554,7 +565,6 @@ public class MainActivity extends AppCompatActivity implements CatAdapter.CatCli
             Python py = Python.getInstance();
             final PyObject pyobj = py.getModule("hyMatches");
             PyObject pyObject = pyobj.callAttr("getHYMatches");
-            String title, score1, score2, team1, team2;
             JSONObject jsonObject = null;
             try {
                 jsonObject = new JSONObject(pyObject.toString());
@@ -564,6 +574,7 @@ public class MainActivity extends AppCompatActivity implements CatAdapter.CatCli
                 {
                     fScorecardArrayList.clear();
                     fScorecardAdapter.notifyDataSetChanged();
+                    emptyTv.setText("There are no matches today");
                     emptyTv.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                     return;
@@ -593,86 +604,11 @@ public class MainActivity extends AppCompatActivity implements CatAdapter.CatCli
                 e.printStackTrace();
             }
             fScorecardAdapter.notifyDataSetChanged();
-//            OkHttpClient client = new OkHttpClient();
-//            Request request;
-//            if(flag == 0) {
-//                request = new Request.Builder()
-//                        .url("https://livescore6.p.rapidapi.com/matches/v2/list-by-date?Category=hockey&Date=" + date)
-//                        .get()
-//                        .addHeader("x-rapidapi-host", "livescore6.p.rapidapi.com")
-//                        .addHeader("x-rapidapi-key", "ea081c1a92msh0a28796a705c58cp18734ejsnb39ae96537b4")
-//                        .build();
-//            }
-//            else{
-//                request = new Request.Builder()
-//                        .url("https://livescore6.p.rapidapi.com/matches/v2/list-live?Category=hockey")
-//                        .get()
-//                        .addHeader("x-rapidapi-host", "livescore6.p.rapidapi.com")
-//                        .addHeader("x-rapidapi-key", "ea081c1a92msh0a28796a705c58cp18734ejsnb39ae96537b4")
-//                        .build();
-//            }
-//
-//            client.newCall(request).enqueue(new Callback() {
-//                @Override
-//                public void onFailure(Call call, IOException e) {
-//                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
-//                }
-//
-//                @Override
-//                public void onResponse(Call call, Response response) throws IOException {
-//                    String resp = response.body().string();
-//                    MainActivity.this.runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            String title, score1, score2, team1, team2;
-//                            JSONObject jsonObject = null;
-//                            try {
-//                                jsonObject = new JSONObject(resp);
-//                                JSONArray jsonArray = jsonObject.getJSONArray("Stages");
-//                                if(jsonArray.length() == 0)
-//                                {
-//                                    emptyTv.setVisibility(View.VISIBLE);
-//                                    progressBar.setVisibility(View.GONE);
-//                                    return;
-//                                }
-//                                else
-//                                {
-//                                    emptyTv.setVisibility(View.GONE);
-//                                    progressBar.setVisibility(View.GONE);
-//                                }
-////                                int i = 0;
-//                                for (int i = 0; i < jsonArray.length(); i++) {
-//                                    String jsonArrayString = jsonArray.get(i).toString();
-//                                    JSONObject innerJson = new JSONObject(jsonArrayString);
-//                                    title = (String) innerJson.get("Snm") + " : " + (String) innerJson.get("Cnm");
-//                                    JSONArray eves = (JSONArray) innerJson.get("Events");
-////                                    int j = 0;
-//                                    for (int j = 0; j < eves.length(); j++) {
-//                                        String jsonArrayString1 = eves.get(j).toString();
-//                                        JSONObject innerJson1 = new JSONObject(jsonArrayString1);
-//                                        score1 = (String) innerJson1.get("Tr1");
-//                                        score2 = (String) innerJson1.get("Tr2");
-//                                        JSONArray arrayT1 = (JSONArray) innerJson1.get("T1");
-//                                        JSONObject x = ((JSONObject)arrayT1.get(0));
-//                                        team1 = (String) x.get("Nm");
-//                                        JSONArray arrayT2 = (JSONArray) innerJson1.get("T2");
-//                                        x = ((JSONObject)arrayT2.get(0));
-//                                        team2 = (String) x.get("Nm");
-//                                        fScorecardArrayList.add(new FScorecard(title, team1, team2, score1, score2));
-//                                    }
-//                                }
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//                            fScorecardAdapter.notifyDataSetChanged();
-////                                Toast.makeText(getApplicationContext(), title, Toast.LENGTH_LONG).show();
-//                        }
-//                    });
-//                }
-//            });
+
         }
         else
         {
+            // Basketball
             progressBar.setVisibility(View.VISIBLE);
             fScorecardArrayList = new ArrayList<>();
             fScorecardAdapter = new FScorecardAdapter(fScorecardArrayList, this);

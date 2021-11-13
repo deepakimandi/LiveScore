@@ -34,7 +34,7 @@ import java.util.Iterator;
 
 public class CricSummary extends AppCompatActivity {
 
-    TextView inn1hdr, inn2hdr;
+    TextView inn1hdr, inn2hdr, pomTv;
     TextView extra1Tv, total1Tv, didnot1Tv, fallof1Tv;
     TextView extra2Tv, total2Tv, didnot2Tv, fallof2Tv;
     RecyclerView inn1batRv, inn2batRv, inn1bowlRv, inn2bowlRv;
@@ -239,6 +239,7 @@ public class CricSummary extends AppCompatActivity {
 //        liveBtn = view1.findViewById(R.id.cslive_button);
 //        msBtn = view1.findViewById(R.id.ms_button);
 
+        pomTv = view1.findViewById(R.id.pomId);
         t1sTv = view1.findViewById(R.id.t1sId);
         t2sTv = view1.findViewById(R.id.t2sId);
         statusTv = view1.findViewById(R.id.statustxtId);
@@ -301,10 +302,15 @@ public class CricSummary extends AppCompatActivity {
             total1Tv.setText(jsonObject.get("t11").toString());
             didnot1Tv.setText(jsonObject.get("t12").toString());
             fallof1Tv.setText(jsonObject.get("t13").toString());
+            if(jsonObject.get("pom").toString() != "0") {
+                JSONArray j = jsonObject.getJSONArray("pom");
+                String s = j.get(0) + ", Score: " + j.get(1);
+                pomTv.setText("Player of the Match: " + s);
+            }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
 
         inn1batRv = view1.findViewById(R.id.inn1bat_rvId);
         inn1batRv.setHasFixedSize(false);

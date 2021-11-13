@@ -25,13 +25,16 @@ def getHYMatches():
     # print(jsonDict)
     ids = []
 
+    # c = 0
 
     for s in jsonDict['seriesDetailsList']:
-        if s['current_status'] == 'Recent': # change
+        if s['current_status'] == 'Ongoing': # change
             ids.append(s['id'])
-            break
+            # c += 1
+            # if c == 3:
+            #     break
 
-    print(ids)
+    # print(ids)
     ret = dict()
     i = "1"
     for _id in ids:
@@ -82,4 +85,4 @@ def getHYMatches():
             #     break;
     return (ret);
 
-pprint(getHYMatches())
+# pprint(getHYMatches())

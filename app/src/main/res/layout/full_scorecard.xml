@@ -70,6 +70,13 @@
                     android:textColor="@color/black"
                     />
 
+                <TextView
+                    android:id="@+id/pomId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    />
 
                 <TextView
                     android:id="@+id/inn1hId"

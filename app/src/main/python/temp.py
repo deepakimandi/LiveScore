@@ -102,7 +102,6 @@ def livecard(url):
                         # print(y.text)
                     j = str(int(j) + 1)
                     # print('-'*110)
-                # pprint('Rama')
             if i == 3:
                 j = '1'
                 for y in x:
@@ -299,12 +298,18 @@ def scorecard(url):
         i += 1
     if ret['headers'][1].find('INNINGS') == -1:
         ret['headers'].pop()
-    # pom = soup.find('div', class_ = 'playerofthematch-player-detail')
-    # s = soup(pom, 'lxml')
-    # print(pom.find('span', class_ = 'playerofthematch-name').text + pom.find('span', class_ = 'playerofthematch-teamName').text)
-    # pom_score = soup.find('div', class_ = 'playerofthematch-score-text')
-    # print(pom_score.text)
 
+    ret['pom'] = []
+    pom = sou.find('div', class_ = 'playerofthematch-player-detail')
+    # s = soup(pom, 'lxml')
+    if pom != None:
+        ret['pom'].append(pom.find('span', class_ = 'playerofthematch-name').text + pom.find('span', class_ = 'playerofthematch-teamName').text)
+        # print(pom.find('span', class_ = 'playerofthematch-name').text + pom.find('span', class_ = 'playerofthematch-teamName').text)
+        pom_score = sou.find('div', class_ = 'playerofthematch-score-text')
+        ret['pom'].append(pom_score.text)
+        # print(pom_score.text)
+    if ret['pom'] == []:
+        ret['pom'] = '0'
     # print(scorecard)
     
     # for score in scorecard:  
@@ -494,6 +499,6 @@ def scorecard(url):
         # fall = soup.find_all('div', class_ = 'cb-col cb-col-100 cb-ltst-wgt-hdr') 
     # pprint(ret)
     return ret
-pprint(livecard('https://www.espncricinfo.com/series/major-clubs-limited-over-tournament-2021-22-1284321/sinhalese-sports-club-vs-saracens-sports-club-group-b-1284357/live-cricket-score'))
+# pprint(livecard('https://www.espncricinfo.com/series/major-clubs-limited-over-tournament-2021-22-1284321/sinhalese-sports-club-vs-saracens-sports-club-group-b-1284357/live-cricket-score'))
 
-# pprint(scorecard('https://www.espncricinfo.com/series/pakistan-shaheens-in-sri-lanka-2021-22-1283198/sri-lanka-a-vs-pakistan-shaheens-1st-unofficial-test-1283201/full-scorecard'))
+# pprint(scorecard('https://www.espncricinfo.com/series/wbbl-2021-22-1269053/hobart-hurricanes-women-vs-adelaide-strikers-women-43rd-match-1269096/full-scorecard'))

@@ -65,7 +65,7 @@ def getCKTMatches(flag):
     if flag == 0:
         for e in jsonDict['matches']:
             url = url_head + e['series']['slug'] + '-' + str(e['series']['objectId']) + '/' + e['slug'] + '-' + str(e['objectId']) + '/full-scorecard'
-            if str(date.today()) == e['startTime'][:10] and ((e["teams"][0]['team']['longName'].find('India') != -1 or e["teams"][1]['team']['longName'].find('India') != -1 or e['series']['description'].find('India') != -1) or (e['series']['longName'] in series) or (e['teams'][0]['team']['longName'] in teams) or (e['teams'][1]['team']['longName'] in teams)):
+            if str(date.today()) == e['startDate'][:10] and ((e["teams"][0]['team']['longName'].find('India') != -1 or e["teams"][1]['team']['longName'].find('India') != -1 or e['series']['description'].find('India') != -1) or (e['series']['longName'] in series) or (e['teams'][0]['team']['longName'] in teams) or (e['teams'][1]['team']['longName'] in teams)):
             # if str(date.today()) == e['startTime'][:10] :
                 # pprint(e['teams'][1]['team']['id'])
                 id1 = e['teams'][0]['team']['id']
@@ -111,4 +111,4 @@ def getCKTMatches(flag):
 #     return (j_son)
 
 
-pprint(getCKTMatches(0))
+# pprint(getCKTMatches(0))
