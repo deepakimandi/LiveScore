@@ -59,12 +59,14 @@ def getCKTMatches(flag):
     # print(jsonDict)
     ret = dict()
     i = "1"
+    series = ['Indian Premier League', 'Syed Mushtaq Ali Trophy', 'Ranji Trophy', 'Vijay Hazare Trophy']
+    teams = ['Sydney Thunder Women', 'Sydney Sixers Women', 'Melbourne Renegades Women', 'Hobart Hurricanes Women', 'Brisbane Heat Women']
     url_head = 'https://www.espncricinfo.com/series/'
     if flag == 0:
         for e in jsonDict['matches']:
             url = url_head + e['series']['slug'] + '-' + str(e['series']['objectId']) + '/' + e['slug'] + '-' + str(e['objectId']) + '/full-scorecard'
-            # if str(date.today()) == e['startTime'][:10] and (e["teams"][0]['team']['longName'].find('India') != -1 or e["teams"][1]['team']['longName'].find('India') != -1 or e['series']['description'].find('India') != -1) :
-            if str(date.today()) == e['startTime'][:10] :
+            if str(date.today()) == e['startTime'][:10] and ((e["teams"][0]['team']['longName'].find('India') != -1 or e["teams"][1]['team']['longName'].find('India') != -1 or e['series']['description'].find('India') != -1) or (e['series']['longName'] in series) or (e['teams'][0]['team']['longName'] in teams) or (e['teams'][1]['team']['longName'] in teams)):
+            # if str(date.today()) == e['startTime'][:10] :
                 # pprint(e['teams'][1]['team']['id'])
                 id1 = e['teams'][0]['team']['id']
                 id2 = e['teams'][1]['team']['id']
@@ -87,7 +89,7 @@ def getCKTMatches(flag):
     else:
         for e in jsonDict['matches']:
             url = url_head + e['series']['slug'] + '-' + str(e['series']['objectId']) + '/' + e['slug'] + '-' + str(e['objectId']) + '/full-scorecard'
-            if e['state'] == 'LIVE' and (e["teams"][0]['team']['longName'].find('India') != -1 or e["teams"][1]['team']['longName'].find('India') != -1 or e['series']['description'].find('India') != -1):
+            if e['state'] == 'LIVE' and ((e["teams"][0]['team']['longName'].find('India') != -1 or e["teams"][1]['team']['longName'].find('India') != -1 or e['series']['description'].find('India') != -1) or (e['series']['longName'] in series) or (e['teams'][0]['team']['longName'] in teams) or (e['teams'][1]['team']['longName'] in teams)):
                 
                 score1 = '' if e['teams'][0]['score'] == None else (e['teams'][0]['score'] + ('' if e['teams'][0]['scoreInfo'] == None else ('(' + e['teams'][0]['scoreInfo'] + ')')))
                 score2 = '' if e['teams'][1]['score'] == None else (e['teams'][1]['score'] + ('' if e['teams'][1]['scoreInfo'] == None else ('(' + e['teams'][1]['scoreInfo'] + ')')))
